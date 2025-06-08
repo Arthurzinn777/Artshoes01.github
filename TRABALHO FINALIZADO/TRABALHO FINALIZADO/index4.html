@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ART SHOES</title>
+    <link rel="stylesheet" href="style4.css">
+    <link rel="icon" href="logo.png">
+</head>
+
+<body>
+
+
+
+    <header>
+        <nav class="navbar">
+             
+            <img src="logo.png" class="image" >
+             
+            <ul class="nav-links">
+                <li><a href="index.html"> Pagina Inicial </a></li>
+                <li><a href="index2.html">Login</a></li>
+                <li><a href="index4.html">Meu Carrinho</a></li>   
+                <li><a href="index3.html">Central de Atendimento</a></li>
+            </ul>
+            
+        </nav>
+       
+        
+    </header>
+
+ <div class="carrinho-container">
+  <div class="produtos">
+    <h2>Seus Produtos</h2>
+    <ul id="lista-carrinho"></ul>
+  </div>
+
+  <div class="resumo">
+    <h2>Resumo do Pedido</h2>
+    <p id="total">Total: R$ 0,00</p>
+    <button id="btn-esvaziar"> Esvaziar Carrinho</button>
+    <button id="btn-pagamento"> Ir para o Pagamento</button>
+  </div>
+</div> 
+
+
+
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const lista = document.getElementById("lista-carrinho");
+    const total = document.getElementById("total");
+
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    let valorTotal = 0;
+
+    carrinho.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.nome} - R$ ${item.preco}`;
+      lista.appendChild(li);
+      valorTotal += parseFloat(item.preco);
+    });
+
+    total.textContent = `Total: R$ ${valorTotal.toFixed(2)}`;
+  });
+</script> 
+
+<script src="script.js"></script>
+</body>
+
+
+</html>
